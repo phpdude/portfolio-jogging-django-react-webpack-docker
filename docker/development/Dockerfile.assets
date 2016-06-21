@@ -1,0 +1,16 @@
+FROM monsantoco/min-jessie
+
+ENV PYTHONUNBUFFERED=1 DOCKER=1
+
+ADD docker/scripts/ /scripts/
+RUN bash /scripts/build-container.assets.sh
+
+ADD project/assets/package.json /app/package.json
+
+RUN cd /app \
+    &&  npm install \
+    &&  bash /scripts/cleanup.sh
+
+WORKDIR /app/project/
+
+EXPOSE 8000

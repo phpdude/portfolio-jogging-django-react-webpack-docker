@@ -1,0 +1,70 @@
+@import "../ratchet/css/ratchet.css";
+@import "../ratchet/css/ratchet-theme-ios.css";
+
+.splash {
+
+  background: -moz-radial-gradient(center, ellipse cover, rgba(112, 167, 255, 1) 0%, rgba(94, 69, 255, 1) 99%, rgba(10, 123, 161, 1) 100%); /* ff3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(112, 167, 255, 1)), color-stop(99%, rgba(94, 69, 255, 1)), color-stop(100%, rgba(10, 123, 161, 1))); /* safari4+,chrome */
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(112, 167, 255, 1) 0%, rgba(94, 69, 255, 1) 99%, rgba(10, 123, 161, 1) 100%); /* safari5.1+,chrome10+ */
+  background: -o-radial-gradient(center, ellipse cover, rgba(112, 167, 255, 1) 0%, rgba(94, 69, 255, 1) 99%, rgba(10, 123, 161, 1) 100%); /* opera 11.10+ */
+  background: -ms-radial-gradient(center, ellipse cover, rgba(112, 167, 255, 1) 0%, rgba(94, 69, 255, 1) 99%, rgba(10, 123, 161, 1) 100%); /* ie10+ */
+  background: radial-gradient(ellipse at center, rgba(112, 167, 255, 1) 0%, rgba(94, 69, 255, 1) 99%, rgba(10, 123, 161, 1) 100%); /* w3c */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70A7FF', endColorstr='#0A7BA1', GradientType=1); /* ie6-9 */
+  color: #fff;
+  cursor: default;
+
+  h1 {
+    text-shadow: 1px 1px 3px #000;
+    text-align: center;
+    margin: 150px 0 25px;
+    font-size: 3em;
+    font-family: "Monotype Corsiva", "Apple Chancery", "URW Chancery L", cursive;
+  }
+
+  p {
+    color: #fff;
+    text-align: center;
+    font-style: italic;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+  }
+}
+
+.login {
+  .content {
+    padding-right: 10px;
+    padding-left: 10px;
+
+    form {
+      padding: 10px 0;
+    }
+  }
+
+  label {
+    input {
+      margin-top: 10px;
+    }
+  }
+
+  p {
+    &.error {
+      color: darkred;
+      font-size: 18px;
+    }
+  }
+
+  .logging-in {
+    margin-top: 30px;
+
+    p {
+      color: #000;
+      font-size: 16px;
+      text-align: center;
+      text-shadow: 1px 1px 3px #fff;
+
+    }
+  }
+}
+
+.input-group {
+  margin-top: 15px;
+}

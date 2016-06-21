@@ -1,0 +1,29 @@
+# Latest django
+django
+django_extensions
+
+# deploy toolkit
+Fabric
+
+# Debug toolbar
+django-debug-toolbar
+
+# @phpdude libs
+django-macros-url
+django-template-names
+
+# cache
+python-memcached
+django-clear-cache
+
+# Database drivers. Uncomment anyone is used.
+#MySQL-python
+#mysqlclient
+psycopg2
+
+# Project custom apps
+djangorestframework
+djangorestframework-jwt
+markdown
+django-filter
+pytest

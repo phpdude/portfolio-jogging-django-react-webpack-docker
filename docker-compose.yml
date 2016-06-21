@@ -1,0 +1,51 @@
+version: '2'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: 'jogging'
+      POSTGRES_PASSWORD: 'cxujc7zquad_yw3a80xrxd547ywq89ufhoykfmj'
+
+  cache:
+    image: memcached
+
+  assets:
+    build:
+      dockerfile: docker/development/Dockerfile.assets
+      context: .
+
+    volumes:
+      - ./project/assets:/app/project/
+
+    command: npm run watch
+
+  manage:
+    build:
+      context: .
+      dockerfile: docker/development/Dockerfile
+
+    entrypoint: python manage.py
+
+    volumes:
+      - ./:/app/
+
+  test:
+    extends:
+      service: manage
+
+    command: test project.apps.api
+    links:
+      - db
+      - cache
+
+  web:
+    extends:
+      service: manage
+    command: runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    links:
+      - db
+      - cache
+      - assets

@@ -1,0 +1,46 @@
+version: '2'
+
+services:
+  db:
+    restart: always
+    image: postgres
+    environment:
+      POSTGRES_USER: 'jogging'
+      POSTGRES_PASSWORD: 'cxujc7zquad_yw3a80xrxd547ywq89ufhoykfmj'
+    volumes:
+      - ./db/postgres:/var/lib/postgresql/data
+
+  cache:
+    restart: always
+    image: redis
+
+  manage:
+    image: 'phpdude/projects:jogging-app'
+    environment:
+      - PRODUCTION=1
+    entrypoint: python manage.py
+    volumes:
+      - ./logs/:/app/logs/
+
+  web:
+    restart: always
+    extends:
+      service: manage
+
+    entrypoint: bash /app/docker/production/web/service.web.sh
+    links:
+      - db
+      - cache
+
+  nginx:
+    restart: always
+    image: 'phpdude/projects:jogging-app'
+    entrypoint: ["nginx", "-g", "daemon off;"]
+    volumes:
+      - ./media/:/app/media/
+      - ./logs/nginx/:/var/log/nginx/
+    ports:
+      - 8088:80
+
+    links:
+      - web
